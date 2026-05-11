@@ -2,19 +2,28 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const gallery = document.querySelector(".gallery");
+const loader = document.querySelector(".loader");
 
 let lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
 });
 
+export function showLoader() {
+  loader.classList.remove("is-hidden");
+}
+
+export function hideLoader() {
+  loader.classList.add("is-hidden");
+}
+
 export function clearGallery() {
   gallery.innerHTML = "";
 }
 
 export function renderImages(images) {
-    const markup = images.map((image) => `
-    <li class ="gallery-item">
+  const markup = images.map((image) => `
+    <li class="gallery-item">
         <a class="gallery-link" href="${image.largeImageURL}">
             <img
             class="gallery-image"
@@ -41,10 +50,11 @@ export function renderImages(images) {
                 <p>${image.downloads}</p>
             </div>
         </div>  
-    </li>`)
-        .join("");
+    </li>`
+    )
+    .join("");
 
-    gallery.insertAdjacentHTML("beforeend", markup);
+  gallery.insertAdjacentHTML("beforeend", markup);
 
-    lightbox.refresh();
+  lightbox.refresh();
 }
