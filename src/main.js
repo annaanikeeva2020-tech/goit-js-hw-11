@@ -4,7 +4,7 @@ import "izitoast/dist/css/iziToast.min.css";
 import { fetchImages } from "./js/pixabay-api";
 import { renderImages, clearGallery } from "./js/render-functions";
 
-const form = document.querySelector(".search-form");
+const form = document.querySelector(".form");
 const loader = document.querySelector(".loader");
 
 function showLoader() {
